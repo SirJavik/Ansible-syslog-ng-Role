@@ -1,0 +1,21 @@
+---
+dependencies: []
+    
+galaxy_info:
+  role_name: syslogng
+  author: javik
+  description: syslog-ng for Debian
+  license: "MIT"
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - linux
+    - debian
+    - logs
+    - logging
+    - syslog
+
+allow_duplicates: true

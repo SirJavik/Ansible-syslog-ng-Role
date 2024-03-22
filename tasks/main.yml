@@ -1,0 +1,23 @@
+- name: Update the repository cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install syslog-ng
+  apt:
+    name: syslog-ng
+    state: latest
+
+- name: Copy syslog-ng.conf to servers
+  ansible.builtin.template:
+    src: ./templates/etc/syslog-ng/syslog-ng.conf.tmpl
+    dest: /etc/syslog-ng/syslog-ng.conf
+    owner: root
+    group: root
+    mode: '0644'
+  register: syslog_ng_conf
+
+- name: Restart syslog-ng
+  service:
+    name: syslog-ng
+    state: restarted
+  when: syslog_ng_conf.changed
